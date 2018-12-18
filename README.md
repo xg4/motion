@@ -1,1 +1,7 @@
 # animation
+
+> animation
+
+## LICENSE
+
+MIT
