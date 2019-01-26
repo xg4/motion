@@ -1,6 +1,6 @@
 {
   "name": "@xg4/motion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "motion & animation",
   "main": "dist/index.min.js",
   "author": "xg4 <xingor4@gmail.com>",
@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "release": "npm run build && cross-env-shell git commit -am \"v\"$npm_package_version && cross-env-shell git tag \"v\"$npm_package_version && git push && git push --tags && npm publish --access=public"
+    "release": "npm run build && cross-env-shell git commit -am \"v\"$npm_package_version && cross-env-shell git tag \"v\"$npm_package_version && git push && git push --tags"
   },
   "keywords": [
     "motion",
