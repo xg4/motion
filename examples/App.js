@@ -13,14 +13,54 @@ export default class App extends React.Component {
     return window.pageYOffset
   }
 
-  setScrollTop = value => {
+  setScrollTop(value) {
     console.log(value)
     window.scrollTo(0, value)
   }
+
   render() {
     return (
       <div>
         <div style={{ height: '20000px' }} />
+        <button
+          onClick={() => {
+            move(this.setScrollTop, {
+              from: this.scrollTop,
+              to: 0,
+              duration: 4 * 1000,
+              timingFunc: easeInBounce
+            })
+          }}
+        >
+          easeInBounce
+        </button>
+
+        <button
+          onClick={() => {
+            move(this.setScrollTop, {
+              from: this.scrollTop,
+              to: 0,
+              duration: 4 * 1000,
+              timingFunc: easeOutBounce
+            })
+          }}
+        >
+          easeOutBounce
+        </button>
+
+        <button
+          onClick={() => {
+            move(this.setScrollTop, {
+              from: this.scrollTop,
+              to: 0,
+              duration: 4 * 1000,
+              timingFunc: easeInOutExpo
+            })
+          }}
+        >
+          easeInOutExpo
+        </button>
+
         <button
           onClick={() => {
             move(this.setScrollTop, {
