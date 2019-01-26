@@ -8,13 +8,14 @@ export default {
     {
       file: pkg.main,
       format: 'umd',
-      name: 'Animation',
+      name: 'Motion',
       globals: {
-        raf: 'raf'
+        raf: 'raf',
+        easings: 'easings'
       }
     }
   ],
-  external: ['raf'],
+  external: ['raf', 'easings'],
   plugins: [
     babel({
       exclude: 'node_modules/**'
