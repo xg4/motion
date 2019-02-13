@@ -2,13 +2,14 @@
   "name": "@xg4/motion",
   "version": "0.0.2",
   "description": "motion & animation",
-  "main": "dist/index.min.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "author": "xg4 <xingor4@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "release": "npm run build && cross-env-shell git commit -am \"v\"$npm_package_version && cross-env-shell git tag \"v\"$npm_package_version && git push && git push --tags"
+    "release": "npm run build && git commit -am \"v\"%npm_package_version% && git tag \"v\"%npm_package_version% && git push && git push --tags"
   },
   "keywords": [
     "motion",
@@ -18,16 +19,17 @@
     "dist"
   ],
   "dependencies": {
-    "@xg4/easings": "^0.0.1",
+    "@xg4/easings": "^0.0.2",
     "raf": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.3.1",
-    "cross-env": "^5.2.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-terser": "^4.0.4"
   },
   "repository": {
     "type": "git",
