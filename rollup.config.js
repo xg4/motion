@@ -4,27 +4,34 @@ import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
-      name: 'XMotion',
       file: pkg.main,
-      format: 'umd',
-      globals: {
-        raf: 'raf'
-      }
+      format: 'cjs'
     },
     {
       file: pkg.module,
       format: 'es'
+    },
+    {
+      name: 'XMotion',
+      file: pkg.browser,
+      format: 'umd',
+      globals: {
+        raf: 'raf'
+      }
     }
   ],
   external: ['raf'],
   plugins: [
-    resolve(),
+    resolve({ extensions }),
     commonjs(),
     babel({
+      extensions,
       exclude: 'node_modules/**'
     }),
     terser()

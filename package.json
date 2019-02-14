@@ -2,34 +2,44 @@
   "name": "@xg4/motion",
   "version": "0.0.3",
   "description": "motion & animation",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "author": "xg4 <xingor4@gmail.com>",
-  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "typings": "dist/types/index.d.ts",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "release": "npm run build && git commit -am \"v\"%npm_package_version% && git tag \"v\"%npm_package_version% && git push && git push --tags"
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "rollup -c",
+    "build": "npm run build:types && npm run build:js",
+    "release": "npm run build && git commit -am \"v\"$npm_package_version && git tag \"v\"$npm_package_version && git push && git push --tags && npm publish --access"
   },
   "keywords": [
     "motion",
     "animation"
   ],
-  "files": [
-    "dist"
-  ],
+  "author": "xg4 <xingor4@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "@xg4/easings": "^0.0.2",
+    "@xg4/easings": "^0.0.3",
     "raf": "^3.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-0",
+    "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/raf": "^3.4.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-terser": "^4.0.4"
+    "rollup-plugin-terser": "^4.0.4",
+    "typescript": "^3.3.3"
   },
   "repository": {
     "type": "git",

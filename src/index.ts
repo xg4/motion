@@ -1,20 +1,26 @@
 import raf from 'raf'
 import { easeInOutCubic } from '@xg4/easings'
 
-const defaultOptions = {
+interface MoveOptions {
+  from?: number
+  to?: number
+  duration?: number
+  timingFunc?: Function
+}
+
+const defaultMoveOptions = {
   from: 0,
   to: 0,
   duration: 450,
   timingFunc: easeInOutCubic
 }
 
-export function move(callback, options) {
+export function move(callback: (value?: number) => void, options: MoveOptions) {
   return new Promise(resolve => {
-    options = {
-      ...defaultOptions,
+    const { from, to, duration, timingFunc } = {
+      ...defaultMoveOptions,
       ...options
     }
-    const { from, to, duration, timingFunc } = options
     const startTime = Date.now()
     const frameFunc = () => {
       const timestamp = Date.now()
