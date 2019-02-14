@@ -1,6 +1,6 @@
 {
   "name": "@xg4/motion",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "motion & animation",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
