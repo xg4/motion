@@ -6,34 +6,39 @@ import pkg from './package.json'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs'
-    },
-    {
-      file: pkg.module,
-      format: 'es'
-    },
-    {
+const plugins = [
+  resolve({ extensions }),
+  commonjs(),
+  babel({
+    extensions,
+    exclude: 'node_modules/**'
+  }),
+  terser()
+]
+
+export default [
+  {
+    input: 'src/index.ts',
+    external: ['raf'],
+    output: [
+      {
+        file: pkg.main,
+        format: 'cjs'
+      },
+      {
+        file: pkg.module,
+        format: 'es'
+      }
+    ],
+    plugins
+  },
+  {
+    input: 'src/index.ts',
+    output: {
       name: 'XMotion',
       file: pkg.browser,
-      format: 'umd',
-      globals: {
-        raf: 'raf'
-      }
-    }
-  ],
-  external: ['raf'],
-  plugins: [
-    resolve({ extensions }),
-    commonjs(),
-    babel({
-      extensions,
-      exclude: 'node_modules/**'
-    }),
-    terser()
-  ]
-}
+      format: 'umd'
+    },
+    plugins
+  }
+]
