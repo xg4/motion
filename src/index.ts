@@ -1,7 +1,7 @@
 import raf from 'raf'
 import { easeInOutCubic } from '@xg4/easings'
 
-interface MotiveOptions {
+export interface MotiveOptions {
   from?: number
   to?: number
   duration?: number
