@@ -1,6 +1,6 @@
 {
   "name": "@xg4/motion",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "motion & animation",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,7 +17,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "rollup -c",
     "build": "npm run build:types && npm run build:js",
-    "release": "npm run build && git commit -am \"v\"$npm_package_version && git tag \"v\"$npm_package_version && git push && git push --tags && npm publish --access"
+    "release": "npm run build && git commit -am \"v\"%npm_package_version% && git tag \"v\"%npm_package_version% && git push && git push --tags && npm publish --access"
   },
   "keywords": [
     "motion",
