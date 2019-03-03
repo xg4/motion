@@ -1,26 +1,25 @@
 import raf from 'raf'
 import { easeInOutCubic } from '@xg4/easings'
 
-interface MoveOptions {
+interface MotiveOptions {
   from?: number
   to?: number
   duration?: number
   timingFunc?: Function
+  count?: number // 0:'infinite', 1:'stop', >1:'count'
+  reverse?: boolean
 }
 
-const defaultMoveOptions = {
-  from: 0,
-  to: 0,
-  duration: 450,
-  timingFunc: easeInOutCubic
-}
-
-export function move(callback: (value?: number) => void, options: MoveOptions) {
+export function move(callback: Function, options: MotiveOptions = {}) {
   return new Promise(resolve => {
-    const { from, to, duration, timingFunc } = {
-      ...defaultMoveOptions,
-      ...options
-    }
+    const {
+      from = 0,
+      to = 0,
+      duration = 450,
+      timingFunc = easeInOutCubic,
+      count = 1,
+      reverse
+    } = options
     const startTime = Date.now()
     const frameFunc = () => {
       const timestamp = Date.now()
@@ -31,7 +30,21 @@ export function move(callback: (value?: number) => void, options: MoveOptions) {
         raf(frameFunc)
       } else {
         callback(to)
-        resolve()
+
+        if (reverse) {
+          options.to = from
+          options.from = to
+        }
+
+        if (count === 1) {
+          resolve()
+        } else {
+          if (count > 1) {
+            options.count = count - 1
+          }
+
+          move(callback, options)
+        }
       }
     }
     raf(frameFunc)
