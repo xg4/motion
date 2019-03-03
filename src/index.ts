@@ -38,7 +38,7 @@ export function move(
         callback(to)
 
         const parseCount = Number(count)
-        if (parseCount === 1 || Number.isNaN(parseCount)) {
+        if (parseCount <= 1 || Number.isNaN(parseCount)) {
           resolve()
           return
         }
@@ -47,10 +47,8 @@ export function move(
           options.to = from
           options.from = to
         }
-        if (count > 1) {
-          options.count = count - 1
-        }
-        move(callback, options)
+
+        move(callback, { ...options, count: count - 1 })
       }
     }
     raf(frameFunc)
