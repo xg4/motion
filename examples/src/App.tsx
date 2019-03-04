@@ -1,24 +1,24 @@
+import {
+  easeInBounce,
+  easeInOutBounce,
+  easeInOutExpo,
+  easeOutBounce,
+  easeOutElastic,
+} from '@xg4/easings'
 import React from 'react'
 import { move } from '../../src'
-import {
-  easeInOutExpo,
-  easeOutElastic,
-  easeOutBounce,
-  easeInBounce,
-  easeInOutBounce
-} from '@xg4/easings'
 
 export default class App extends React.Component {
   get scrollTop() {
     return window.pageYOffset
   }
 
-  setScrollTop(value) {
+  public setScrollTop(value) {
     console.log(value)
     window.scrollTo(0, value)
   }
 
-  render() {
+  public render() {
     return (
       <div>
         <button
@@ -27,9 +27,9 @@ export default class App extends React.Component {
               from: 0,
               to: 20000,
               duration: 4 * 1000,
-              timingFunc: easeInBounce,
+              ease: easeInBounce,
               count: 2,
-              reverse: true
+              reverse: true,
             })
           }}
         >
@@ -42,8 +42,8 @@ export default class App extends React.Component {
               from: this.scrollTop,
               to: 0,
               duration: 4 * 1000,
-              timingFunc: easeInBounce,
-              count: 2
+              ease: easeInBounce,
+              count: 2,
             })
           }}
         >
@@ -56,7 +56,7 @@ export default class App extends React.Component {
               from: this.scrollTop,
               to: 0,
               duration: 4 * 1000,
-              timingFunc: easeOutBounce
+              ease: easeOutBounce,
             })
           }}
         >
@@ -69,7 +69,7 @@ export default class App extends React.Component {
               from: this.scrollTop,
               to: 0,
               duration: 4 * 1000,
-              timingFunc: easeInOutExpo
+              ease: easeInOutExpo,
             })
           }}
         >
@@ -82,7 +82,7 @@ export default class App extends React.Component {
               from: this.scrollTop,
               to: 0,
               duration: 4 * 1000,
-              timingFunc: easeInOutBounce
+              ease: easeInOutBounce,
             })
           }}
         >
@@ -95,7 +95,7 @@ export default class App extends React.Component {
               from: this.scrollTop,
               to: 0,
               duration: 4 * 1000,
-              timingFunc: easeOutElastic
+              ease: easeOutElastic,
             })
           }}
         >
