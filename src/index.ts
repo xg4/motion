@@ -1,13 +1,22 @@
 import { easeInOutCubic } from '@xg4/easings'
 import raf from 'raf'
 
-export type easeFunc = (
+type easeFuncBase = (
   time: number,
   from: number,
   to: number,
   duration: number,
-  s?: number,
 ) => number
+
+type easeFuncWithSpeed = (
+  time: number,
+  from: number,
+  to: number,
+  duration: number,
+  speed?: number,
+) => number
+
+export type easeFunc = easeFuncBase | easeFuncWithSpeed
 
 export interface MotiveOptions {
   from?: number
