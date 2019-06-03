@@ -1,6 +1,6 @@
-# motion
+# Motion
 
-[![Build Status](https://www.travis-ci.org/xg4/motion.svg?branch=master)](https://www.travis-ci.org/xg4/motion)
+[![Build Status](https://www.travis-ci.com/xg4/motion.svg?branch=master)](https://www.travis-ci.com/xg4/motion)
 [![npm](https://img.shields.io/npm/v/@xg4/motion.svg)](https://www.npmjs.com/package/@xg4/motion)
 [![npm](https://img.shields.io/npm/l/@xg4/motion.svg)](https://www.npmjs.com/package/@xg4/motion)
 
@@ -24,42 +24,37 @@ $ yarn add @xg4/motion
 import { move } from '@xg4/motion'
 import { easeInOutCubic } from '@xg4/easings'
 
-function setValue(value) {
-  // value 运动的数值
-  console.log(value)
-}
-
-move(setValue, {
+move(handler, {
   from: 0,
   to: 100,
   duration: 3000,
   ease: easeInOutCubic
 })
-```
 
-## API
-
-### move options
-
-```ts
-export interface MotiveOptions {
-  from?: number
-  to?: number
-  duration?: number
-  ease?: easeFunc
-  count?: number
-  reverse?: boolean
+function handler(value) {
+  // value (0~100)
+  console.log(value)
 }
 ```
+
+### Move Options
 
 | name     | type     | default        | description          |
 | -------- | -------- | -------------- | -------------------- |
 | from     | number   | 0              | 起始值               |
 | to       | number   | 0              | 结束值               |
 | duration | number   | 450            | 运动持续时间         |
-| ease     | function | easeInOutCubic | 渐变函数             |
+| ease     | function | easeInOutCubic | 缓动函数             |
 | count    | number   | 1              | 运动次数             |
 | reverse  | boolean  | false          | 反复运动时，是否反转 |
+
+## Contributing
+
+Welcome
+
+- Fork it
+
+- Submit pull request
 
 ## LICENSE
 
