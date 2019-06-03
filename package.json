@@ -59,7 +59,6 @@
     ]
   },
   "dependencies": {
-    "@xg4/easings": "^0.0.4",
     "raf": "^3.4.1"
   },
   "devDependencies": {

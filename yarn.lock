@@ -720,11 +720,6 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@xg4/easings@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@xg4/easings/-/easings-0.0.4.tgz#7c82dc4f3d65e48734732f2d03ce31753be293b5"
-  integrity sha512-0nmXPQvhSNTTNfJV5K/11o/ZmuAWGLzZAsw9z2PJfbJzv64Lc6JTKk6vX7W4t5J7WrdFmmn0KqQ7rDUHsGgshw==
-
 acorn-jsx@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.0.1.tgz#32a064fd925429216a09b141102bfdd185fae40e"

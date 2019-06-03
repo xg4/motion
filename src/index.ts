@@ -1,4 +1,4 @@
-import { easeInOutCubic } from '@xg4/easings'
+import { easeInOutCubic } from './easings'
 import raf from 'raf'
 
 type easeFuncBase = (
