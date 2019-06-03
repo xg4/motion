@@ -26,14 +26,21 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "scripts": {
-    "build": "npm run lint && npm run build:types && npm run build:js",
+    "prebuild": "npm run clean",
+    "build": "npm run build:types && npm run build:js",
     "build:js": "rollup -c",
     "build:types": "tsc --emitDeclarationOnly",
-    "dev": "rollup -c -w",
+    "clean": "rimraf dist",
     "lint": "tslint src/**/*.{ts,tsx}",
+    "prepublishOnly": "npm run build",
+    "postpublish": "git push && git push --tags",
     "release": "npm run build && git commit -am \"v\"%npm_package_version% && git tag \"v\"%npm_package_version% && git push && git push --tags && npm publish --access",
+    "start": "rollup -c -w",
+    "test": "npm run lint",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "preversion": "npm run test",
+    "postversion": "npm publish"
   },
   "husky": {
     "hooks": {
@@ -57,6 +64,7 @@
     "@types/raf": "^3.4.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
+    "rimraf": "^2.6.3",
     "rollup": "^1.13.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.0.0",
