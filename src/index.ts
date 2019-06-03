@@ -5,7 +5,7 @@ type easeFuncBase = (
   time: number,
   from: number,
   to: number,
-  duration: number,
+  duration: number
 ) => number
 
 type easeFuncWithSpeed = (
@@ -13,7 +13,7 @@ type easeFuncWithSpeed = (
   from: number,
   to: number,
   duration: number,
-  speed?: number,
+  speed?: number
 ) => number
 
 export type easeFunc = easeFuncBase | easeFuncWithSpeed
@@ -29,16 +29,16 @@ export interface MotiveOptions {
 
 export function move(
   callback: (currentValue?: number) => void,
-  options: MotiveOptions = {},
+  options: MotiveOptions = {}
 ) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const {
       from = 0,
       to = 0,
       duration = 450,
       ease = easeInOutCubic,
       count = 1,
-      reverse,
+      reverse
     } = options
     const startTime = Date.now()
     const frameFunc = () => {
