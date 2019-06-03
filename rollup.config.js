@@ -11,6 +11,7 @@ const plugins = [
   commonjs(),
   babel({
     extensions,
+    include: ['src/**/*'],
     exclude: 'node_modules/**'
   }),
   terser()
@@ -35,7 +36,7 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      name: 'XMotion',
+      name: 'Motion',
       file: pkg.browser,
       format: 'umd'
     },
