@@ -1,17 +1,15 @@
 language: node_js
 
-sudo: required
-
 node_js:
   - '10'
 
-os: linux
-
-install:
-  - yarn
-
 script:
-  - npm run lint
+  - npm run test:cov
+  - npm run build
+
+after_success:
+  - cat ./coverage/lcov.info
+  - npx codecov
 
 before_deploy:
   - cd ./examples && yarn && npm run build
