@@ -50,18 +50,18 @@ move(handler, {
 
 ### ease function
 
-| in            | out            | in-out           |
-| ------------- | -------------- | ---------------- |
-| easeInBack    | easeOutBack    | easeInOutBack    |
-| easeInBounce  | easeOutBounce  | easeInOutBounce  |
-| easeInCirc    | easeOutCirc    | easeInOutCirc    |
-| easeInCubic   | easeOutCubic   | easeInOutCubic   |
-| easeInElastic | easeOutElastic | easeInOutElastic |
-| easeInExpo    | easeOutExpo    | easeInOutExpo    |
-| easeInQuad    | easeOutQuad    | easeInOutQuad    |
-| easeInQuart   | easeOutQuart   | easeInOutQuart   |
-| easeInQuint   | easeOutQuint   | easeInOutQuint   |
-| easeInSine    | easeOutSine    | easeInOutSine    |
+| name    | in            | out            | in-out           |
+| ------- | ------------- | -------------- | ---------------- |
+| back    | easeInBack    | easeOutBack    | easeInOutBack    |
+| bounce  | easeInBounce  | easeOutBounce  | easeInOutBounce  |
+| circ    | easeInCirc    | easeOutCirc    | easeInOutCirc    |
+| cubic   | easeInCubic   | easeOutCubic   | easeInOutCubic   |
+| elastic | easeInElastic | easeOutElastic | easeInOutElastic |
+| expo    | easeInExpo    | easeOutExpo    | easeInOutExpo    |
+| quad    | easeInQuad    | easeOutQuad    | easeInOutQuad    |
+| quart   | easeInQuart   | easeOutQuart   | easeInOutQuart   |
+| quint   | easeInQuint   | easeOutQuint   | easeInOutQuint   |
+| sine    | easeInSine    | easeOutSine    | easeInOutSine    |
 
 ## Contributing
 
