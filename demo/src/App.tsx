@@ -1,15 +1,15 @@
+import React from 'react'
 import {
+  move,
   easeInBounce,
   easeInOutBounce,
   easeInOutExpo,
   easeOutBounce,
-  easeOutElastic,
-} from '@xg4/easings'
-import React from 'react'
-import { move } from '../../src'
+  easeOutElastic
+} from '../../src'
 
 export default class App extends React.Component {
-  get scrollTop() {
+  public get scrollTop() {
     return window.pageYOffset
   }
 
@@ -24,12 +24,12 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: 0,
-              to: 20000,
+              start: 0,
+              end: 20000,
               duration: 4 * 1000,
               ease: easeInBounce,
               count: 2,
-              reverse: true,
+              loop: true
             })
           }}
         >
@@ -39,11 +39,11 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: this.scrollTop,
-              to: 0,
+              start: this.scrollTop,
+              end: 0,
               duration: 4 * 1000,
               ease: easeInBounce,
-              count: 2,
+              count: 2
             })
           }}
         >
@@ -53,10 +53,10 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: this.scrollTop,
-              to: 0,
+              start: this.scrollTop,
+              end: 0,
               duration: 4 * 1000,
-              ease: easeOutBounce,
+              ease: easeOutBounce
             })
           }}
         >
@@ -66,10 +66,10 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: this.scrollTop,
-              to: 0,
+              start: this.scrollTop,
+              end: 0,
               duration: 4 * 1000,
-              ease: easeInOutExpo,
+              ease: easeInOutExpo
             })
           }}
         >
@@ -79,10 +79,10 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: this.scrollTop,
-              to: 0,
+              start: this.scrollTop,
+              end: 0,
               duration: 4 * 1000,
-              ease: easeInOutBounce,
+              ease: easeInOutBounce
             })
           }}
         >
@@ -92,10 +92,10 @@ export default class App extends React.Component {
         <button
           onClick={() => {
             move(this.setScrollTop, {
-              from: this.scrollTop,
-              to: 0,
+              start: this.scrollTop,
+              end: 0,
               duration: 4 * 1000,
-              ease: easeOutElastic,
+              ease: easeOutElastic
             })
           }}
         >

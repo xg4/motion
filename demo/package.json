@@ -1,12 +1,11 @@
 {
-  "name": "examples",
-  "version": "0.0.1",
-  "author": "xg4 <xingor4@gmail.com>",
-  "license": "MIT",
+  "name": "demo",
   "scripts": {
-    "dev": "parcel src/index.html --no-cache",
-    "build": "rimraf dist && parcel build src/index.html --public-url ./ --no-source-maps --no-cache",
-    "deploy": "npm run build && gh-pages -d dist"
+    "prebuild": "rimraf dist",
+    "build": "parcel build src/index.html --public-url . --no-source-maps --no-cache",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "start": "parcel src/index.html"
   },
   "dependencies": {
     "react": "^16.7.0",
