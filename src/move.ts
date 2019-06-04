@@ -46,6 +46,7 @@ export function move(
 
       resolve()
     }
+
     raf(frameFunc)
   })
 }
