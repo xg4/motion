@@ -1,6 +1,6 @@
 {
   "name": "@xg4/motion",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "motion by requestAnimationFrame",
   "keywords": [
     "animation",
