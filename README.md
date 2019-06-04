@@ -1,6 +1,7 @@
 # Motion
 
 [![Build Status](https://www.travis-ci.com/xg4/motion.svg?branch=master)](https://www.travis-ci.com/xg4/motion)
+[![codecov](https://img.shields.io/codecov/c/github/xg4/motion.svg)](https://codecov.io/gh/xg4/motion)
 [![npm](https://img.shields.io/npm/v/@xg4/motion.svg)](https://www.npmjs.com/package/@xg4/motion)
 [![npm](https://img.shields.io/npm/l/@xg4/motion.svg)](https://www.npmjs.com/package/@xg4/motion)
 
@@ -21,32 +22,46 @@ $ yarn add @xg4/motion
 ## Usage
 
 ```js
-import { move } from '@xg4/motion'
-import { easeInOutCubic } from '@xg4/easings'
-
-move(handler, {
-  from: 0,
-  to: 100,
-  duration: 3000,
-  ease: easeInOutCubic
-})
+import { move, easeInOutCubic } from '@xg4/motion'
 
 function handler(value) {
   // value (0~100)
   console.log(value)
 }
+
+move(handler, {
+  start: 0,
+  end: 100,
+  duration: 3000,
+  ease: easeInOutCubic
+})
 ```
 
 ### Move Options
 
-| name     | type     | default        | description          |
-| -------- | -------- | -------------- | -------------------- |
-| from     | number   | 0              | 起始值               |
-| to       | number   | 0              | 结束值               |
-| duration | number   | 450            | 运动持续时间         |
-| ease     | function | easeInOutCubic | 缓动函数             |
-| count    | number   | 1              | 运动次数             |
-| reverse  | boolean  | false          | 反复运动时，是否反转 |
+| name     | type     | default        | description |
+| -------- | -------- | -------------- | ----------- |
+| start    | number   | 0              | 起始值      |
+| end      | number   | 0              | 结束值      |
+| duration | number   | 450            | 持续时间    |
+| ease     | function | easeInOutCubic | 缓动函数    |
+| count    | number   | 1              | 运动次数    |
+| loop     | boolean  | false          | 循环运动    |
+
+### ease function
+
+| in            | out            | in-out           |
+| ------------- | -------------- | ---------------- |
+| easeInBack    | easeOutBack    | easeInOutBack    |
+| easeInBounce  | easeOutBounce  | easeInOutBounce  |
+| easeInCirc    | easeOutCirc    | easeInOutCirc    |
+| easeInCubic   | easeOutCubic   | easeInOutCubic   |
+| easeInElastic | easeOutElastic | easeInOutElastic |
+| easeInExpo    | easeOutExpo    | easeInOutExpo    |
+| easeInQuad    | easeOutQuad    | easeInOutQuad    |
+| easeInQuart   | easeOutQuart   | easeInOutQuart   |
+| easeInQuint   | easeOutQuint   | easeInOutQuint   |
+| easeInSine    | easeOutSine    | easeInOutSine    |
 
 ## Contributing
 
