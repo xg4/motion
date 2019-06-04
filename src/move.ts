@@ -1,71 +1,50 @@
-import { easeInOutCubic } from './ease'
 import raf from 'raf'
+import { easeInOutCubic } from './ease'
 
-type easeFuncBase = (
-  time: number,
-  from: number,
-  to: number,
+export interface MoveOptions {
+  start: number
+  end: number
   duration: number
-) => number
-
-type easeFuncWithSpeed = (
-  time: number,
-  from: number,
-  to: number,
-  duration: number,
-  speed?: number
-) => number
-
-export type easeFunc = easeFuncBase | easeFuncWithSpeed
-
-export interface MotiveOptions {
-  from?: number
-  to?: number
-  duration?: number
-  ease?: easeFunc
-  count?: number // Infinity, 1:'stop', >1:'count'
-  reverse?: boolean
+  ease: (
+    time: number,
+    start: number,
+    end: number,
+    duration: number,
+    speed?: number
+  ) => number
+  count: number
+  loop: boolean
 }
 
 export function move(
-  callback: (currentValue?: number) => void,
-  options: MotiveOptions = {}
+  callback: (value: number) => void,
+  options: Partial<MoveOptions> = {}
 ) {
   return new Promise(resolve => {
-    const {
-      from = 0,
-      to = 0,
-      duration = 450,
-      ease = easeInOutCubic,
-      count = 1,
-      reverse
-    } = options
+    let { start = 0, end = 0, count = 1 } = options
+    const { duration = 450, ease = easeInOutCubic, loop = false } = options
+
     const startTime = Date.now()
     const frameFunc = () => {
       const timestamp = Date.now()
       const time = timestamp - startTime
 
-      callback(ease(time, from, to, duration))
+      callback(ease(time, start, end, duration))
       if (time < duration) {
         raf(frameFunc)
-      } else {
-        // over
-        callback(to)
-
-        if (reverse) {
-          options.to = from
-          options.from = to
-        }
-
-        const nextCount = count - 1
-
-        if (nextCount >= 1) {
-          move(callback, { ...options, count: nextCount })
-          return
-        }
-
-        resolve()
+        return
       }
+      callback(end)
+
+      if (--count > 0) {
+        if (loop) {
+          ;[start, end] = [end, start]
+        }
+        move(callback, { ...options, start, end, count })
+        return
+      }
+
+      resolve()
     }
     raf(frameFunc)
   })
