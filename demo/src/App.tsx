@@ -8,6 +8,29 @@ import {
   easeOutElastic
 } from '../../src'
 
+const blocks = [
+  '#1abc9c',
+  '#16a085',
+  '#2ecc71',
+  '#27ae60',
+  '#3498db',
+  '#2980b9',
+  '#9b59b6',
+  '#8e44ad',
+  '#34495e',
+  '#2c3e50',
+  '#f1c40f',
+  '#f39c12',
+  '#e67e22',
+  '#d35400',
+  '#e74c3c',
+  '#c0392b',
+  '#ecf0f1',
+  '#bdc3c7',
+  '#95a5a6',
+  '#7f8c8d'
+]
+
 export default class App extends React.Component {
   public get scrollTop() {
     return window.pageYOffset
@@ -35,7 +58,17 @@ export default class App extends React.Component {
         >
           easeInBounce(reverse,count=2)
         </button>
-        <div style={{ height: '20000px' }} />
+        <div style={{ height: '20000px', border: '1px solid #333' }}>
+          {blocks.map((color, index) => (
+            <div
+              key={index}
+              style={{
+                height: 20000 / blocks.length + 'px',
+                backgroundColor: color
+              }}
+            />
+          ))}
+        </div>
         <button
           onClick={() => {
             move(this.setScrollTop, {
